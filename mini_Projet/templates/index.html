@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Budget En Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="conteneur">
+        <h2 class="titre-principal">💰 Mon Budget En Flask 💰</h2>
+
+        <div class="resume">
+            <div class="Stat">Revenus: <span class="valeur">730€</span></div>
+            <div class="Stat">Dépenses: <span class="valeur">-270€</span></div>
+            <div class="Stat">Solde: <span class="valeur">460€</span></div>
+        </div>
+
+        <form class="formulaire-ajout">
+            <input type="text" class="champ-texte" placeholder="Description">
+            <input type="number" class="champ-texte" placeholder="Montant">
+            <select class="menu-deroulant">
+                <option>Alimentation</option>
+                <option>Salaire</option>
+                <option>Loisirs</option>
+            </select>
+            <input type="date" class="champ-date">
+            <select class="menu-deroulant">
+                <option>Revenu</option>
+                <option>Dépense</option>
+            </select>
+            <button type="button" class="bouton-valider">Ajouter</button>
+        </form>
+
+        <div class="zone-tableau">
+            <table class="tableau-transactions">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Catégorie</th>
+                        <th>Montant</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>01/02/2026</td>
+                        <td>Gain</td>
+                        <td><span class="badge-categorie">revenu</span></td>
+                        <td class="texte-positif">+430€</td>
+                    </tr>
+                    <tr>
+                        <td>01/02/2026</td>
+                        <td>Gain</td>
+                        <td><span class="badge-categorie">revenu</span></td>
+                        <td class="texte-positif">+300€</td>
+                    </tr>
+					<tr>
+                        <td>01/02/2026</td>
+                        <td>Loisirs</td>
+                        <td><span class="badge-categorie">loisirs</span></td>
+                        <td class="texte-negatif">-250€</td>
+                    </tr>
+                    <tr>
+                        <td>01/02/2026</td>
+                        <td>fastfood</td>
+                        <td><span class="badge-categorie">alimentation</span></td>
+                        <td class="texte-negatif">-20€</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="zone-graphique-principale">
+            <canvas id="graphiqueSolde" height="100"></canvas>
+        </div>
+
+        <div class="grille-graphiques-secondaires">
+            <div class="zone-graphique">
+                <canvas id="graphiqueRevenus" height="150"></canvas>
+            </div>
+            <div class="zone-graphique">
+                <canvas id="graphiqueDepenses" height="150"></canvas>
+            </div>
+        </div>
+    </div> <script src="{{ url_for('static', filename='js/graphiques.js') }}"></script>
+</body>
+</html>
